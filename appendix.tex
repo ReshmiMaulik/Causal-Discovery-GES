@@ -1,0 +1,32 @@
+\documentclass[runningheads]{llncs}
+%
+\usepackage[T1]{fontenc}
+\begin{document}
+\section{Comparitive study with Peter-Clark (PC) algorithm, LiNGAM and Fast Greedy Equivalence Search (FGES) }
+Understanding causal linkages is important in domains like economics, genetics, and social sciences.
+One popular constraint-based technique for determining causal relationships from observational data is the Peter-Clark (PC) algorithm, named for its developers. Based on conditional independence checks, it iteratively removes edges from a complete, undirected graph at first ~\cite{spirtes2001causation},~\cite{wang2018direct}. Conversely, the Greedy Equivalence Search (GES) algorithm is a score-based method that maximizes a scoring function reflecting the model's fit to the data by gradually adding or removing edges ~\cite{wang2018direct}, ~\cite{zhalama2017weakening}. While they use distinct approaches, both algorithms seek to uncover the underlying causal structure among variables: the PC algorithm concentrates on restrictions derived from conditional independencies, whereas GES optimizes a score through heuristic search. The particular requirements of the dataset and the available processing power may influence which option is best.The faithfulness assumption, which may be a strong assumption that is challenging to meet in practice, is a significant drawback of the constraint-based method.
+Because of its effectiveness, adaptability, and durability, GES is frequently chosen—especially for large and complicated datasets ~\cite{zhalama2017weakening}.
+PC is primarily intended for observational data, but GES can handle both observational and interventional data ~\cite{wang2018direct}.
+
+The LiNGAM algorithm is a causal discovery technique that uses observational data to determine the causal structure of variables. The underlying presumption is that a linear, non-Gaussian model that produces the data enables the estimation of the causal order of variables. Using independent component analysis (ICA), the program determines a mixing matrix that explains how latent, independent non-Gaussian sources give rise to observed variables, thereby revealing the underlying causal links. Because it offers a data-driven method of inferring causation, this approach is especially helpful when background knowledge is insufficient to identify the causal graph. 
+While GES is capable of handling a wider variety of data types, LiNGAM excels in situations involving continuous data and non-Gaussian noise~\cite{yamayoshi2020estimation}.\tofix{Need to specifiy what LiNGAM is, before this.}\reply{Done}
+
+Despite its strength, the Greedy Equivalency Search (GES) method has some drawbacks. The exponential increase of the branching factor in the search space is a major obstacle, especially when the models that the Forward Equivalency Search (FES) phase finds are complex. Because of this, the method may become less useful for large datasets with numerous nodes and more computationally costly. Furthermore, in order to satisfy its large-sample guarantees, GES can need a lot of data, which can be problematic—particularly in discrete domains where scoring functions estimate different multinomial distributions for every configuration of a node's parents. 
+FGES and GES are algorithms used in the field of causal discovery to infer causal links from data. The main distinction between GES and FGES is how efficiently they compute. An enhanced version of GES called FGES is intended to manage bigger datasets more effectively. FGES has performance improvements that expedite the search process over the space of equivalency classes of directed acyclic graphs (DAGs), which makes it more appropriate for high-dimensional data than GES ~\cite{huang2018generalized}. The idea behind both approaches is to find the graph structure that best fits the given data; however, FGES searches faster and more scalable.
+
+\begin{thebibliography}{5}
+\bibitem{spirtes2001causation}
+Spirtes, P., Glymour, C. and Scheines, R., 2001. Causation, prediction, and search. MIT press (2001).
+
+\bibitem{wang2018direct}
+Wang, Y., Squires, C., Belyaeva, A. and Uhler, C.: Direct estimation of differences in causal graphs. Advances in neural information processing systems, 31, (2018).
+
+\bibitem{zhalama2017weakening}Zhalama, Zhang, J. and Mayer, W.: Weakening faithfulness: some heuristic causal discovery algorithms. International journal of data science and analytics, 3, pp.93-104 (2017).
+
+\bibitem{yamayoshi2020estimation}
+Yamayoshi, M., Tsuchida, J. and Yadohisa, H.: An estimation of causal structure based on Latent LiNGAM for mixed data. Behaviormetrika, 47, pp.105-121, 2020.
+
+\bibitem{huang2018generalized}
+Huang, B., Zhang, K., Lin, Y., Schölkopf, B. and Glymour, C.: Generalized score functions for causal discovery. In Proceedings of the 24th ACM SIGKDD international conference on knowledge discovery and data mining,pp. 1551-1560 (2018).
+\end{thebibliography}
+\end{document}
